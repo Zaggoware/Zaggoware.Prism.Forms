@@ -1,5 +1,7 @@
 # Zaggoware.Prism.Forms
-Repository with some additional classes and extensions for the Prism Library for Xamarin Forms .
+Repository with some additional classes and extensions for the Prism Library for Xamarin Forms.
+
+![Nuget version](https://img.shields.io/nuget/v/Zaggoware.Prism.Forms)
 
 ## Navigation
 
