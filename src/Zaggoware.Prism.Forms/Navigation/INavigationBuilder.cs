@@ -23,7 +23,7 @@
         
         Uri? Uri { get; }
         
-        INavigationBuilder Animate();
+        INavigationBuilder Animate(bool animate);
 
         INavigationBuilder AsModal();
         

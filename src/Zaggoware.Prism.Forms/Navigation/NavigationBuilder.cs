@@ -38,9 +38,9 @@
         
         public Uri? Uri { get; protected set; }
 
-        public virtual INavigationBuilder Animate()
+        public virtual INavigationBuilder Animate(bool animate)
         {
-            ShouldAnimate = true;
+            ShouldAnimate = animate;
             return this;
         }
 
