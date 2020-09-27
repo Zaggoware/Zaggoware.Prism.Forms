@@ -8,6 +8,7 @@
         <Description>Package with some useful additional classes and extensions for the Prism Library for Xamarin Forms to make things a bit easier and prettier.</Description>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageProjectUrl>https://github.com/Zaggoware/Zaggoware.Prism.Forms</PackageProjectUrl>
+        <Version>1.0.1</Version>
     </PropertyGroup>
 
     <ItemGroup>
