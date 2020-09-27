@@ -18,10 +18,26 @@
         {
         }
 
+        public bool HasContent { get; set; } = true;
+
+        public bool HasInternetConnection => Connectivity.NetworkAccess == NetworkAccess.Internet;
+
+        public bool IsLoading { get; set; }
+
         public override async void OnAppearing()
         {
             base.OnAppearing();
+            
+            Connectivity.ConnectivityChanged += OnConnectivityChanged;
+            
             await OnLoadAsync();
+        }
+
+        public override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            
+            Connectivity.ConnectivityChanged -= OnConnectivityChanged;
         }
 
         protected async Task<TData?> LoadApiDataAsync()
@@ -38,15 +54,11 @@
             return data;
         }
 
-        protected override async void OnConnectivityChanged(object sender, ConnectivityChangedEventArgs args)
+        protected virtual async void OnConnectivityChanged(object sender, ConnectivityChangedEventArgs args)
         {
             if (args.NetworkAccess == NetworkAccess.Internet)
             {
                 await LoadApiDataAsync();
-            }
-            else
-            {
-                LoadCachedData();
             }
         }
 
