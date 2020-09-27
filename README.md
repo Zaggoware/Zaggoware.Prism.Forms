@@ -38,7 +38,6 @@ await NavigationService
     .Animate(false)
     .NavigateAsync();
 ```
-[Needs confirmation] When animation has been disabled on a global scale, this method can be used to re-enable animation only once.
 
 For modal windows, you can simply add `AsModal()` to the builder:
 ```csharp
