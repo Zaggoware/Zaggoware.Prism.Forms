@@ -11,7 +11,7 @@ INavigationBuilder ToPage<TPage>() where TPage : Xamarin.Forms.Page
 ```
 These methods will create a new `NavigationBuilder` for the current `NavigationService`.
 
-Basic usage:
+### Basic usage:
 ```csharp
 await NavigationService
     .FromRoot()
@@ -19,6 +19,7 @@ await NavigationService
     .NavigateAsync()
 // This results in: "/MainPage"
 ```
+`.FromRoot()` can be useful when the user is not allowed to navigate back (e.g. when logging out).
 
 Going to a (sub-)page with navigation history:
 ```csharp
@@ -30,6 +31,21 @@ await NavigationService
 // This results in: "NavigationPage/DetailsPage?Id=123"
 ```
 
+### Navigation parameters
+To add navigation parameters:
+```csharp
+await NavigationService
+    .ToPage<NavigationPage>()
+    .ToPage<AnotherPage>()
+    .WithParam("Foo", "Bar") // Tip: ParamNames.Foo (see tip below) or extension method: WithFoo(...)
+    .WithParam("Bar", "Foo") // Tip: Paramnames.Bar (see tip below) or extension method: WithBar(...)
+    .NavigateAsync();
+// this results in: "NavigationPage/AnotherPage?Foo=Bar&Bar=Foo"
+```
+*Tip*: To prevent hardcoding the param names, create a class named `ParamNames` and add constant strings to it.
+When retrieving the parameters, you can then simply call `parameters.GetValue<string>(ParamNames.Foo)`. Or even better, create an extensions class so you can call `parameters.GetFoo()`.
+
+### Animation
 By default, page navigation has an animation. To disable this, you can add `Animate(false)` to the builder:
 ```csharp
 await NavigationService
@@ -39,6 +55,7 @@ await NavigationService
     .NavigateAsync();
 ```
 
+### Modal windows
 For modal windows, you can simply add `AsModal()` to the builder:
 ```csharp
 await NavigationService
