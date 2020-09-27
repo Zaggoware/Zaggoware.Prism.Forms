@@ -3,7 +3,10 @@
     using global::Prism.AppModel;
     using global::Prism.Navigation;
     using global::Prism.Services;
+    
+    using PropertyChanged;
 
+    [AddINotifyPropertyChangedInterface]
     public abstract class PageViewModelBase : IInitialize, INavigatedAware, IPageLifecycleAware
     {
         protected PageViewModelBase(
