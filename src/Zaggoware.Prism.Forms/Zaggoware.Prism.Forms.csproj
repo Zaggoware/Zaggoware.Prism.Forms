@@ -3,6 +3,11 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
+        <Authors>Patrick van der Linden</Authors>
+        <Company>Zaggoware</Company>
+        <Description>Package with some useful additional classes and extensions for the Prism Library for Xamarin Forms to make things a bit easier and prettier.</Description>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageProjectUrl>https://github.com/Zaggoware/Zaggoware.Prism.Forms</PackageProjectUrl>
     </PropertyGroup>
 
     <ItemGroup>
@@ -24,6 +29,13 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>Exceptions.resx</DependentUpon>
       </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\..\LICENSE">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
     </ItemGroup>
 
 </Project>
