@@ -20,33 +20,43 @@
 
         public static string Delimiter { get; set; } = "/";
 
-        public static Action<Exception>? NavigationExceptionHandler { get; set; } = HandleNavigationException;
+        public static Action<INavigationResult>? NavigationFailedHandler { get; set; }
         
         public static string ParamId { get; set; } = "Id";
+
+        public static bool ShouldAnimateByDefault { get; set; } = true;
         
-        public bool? IsModal { get; protected set; }
+        public bool? NavigateAsModal { get; protected set; }
         
         public bool NavigateFromRoot { get; protected set; }
         
-        public NavigationParameters NavigationParameters { get; protected set; } = new NavigationParameters();
+        public NavigationParameters? NavigationParameters { get; protected set; }
         
         public INavigationService NavigationService { get; protected set; }
 
         public string[] Pages => _pages.ToArray();
         
-        public bool ShouldAnimate { get; protected set; } = true;
+        public bool ShouldAnimate { get; protected set; } = ShouldAnimateByDefault;
+
+        public bool ShouldEnsureSuccess { get; protected set; }
         
         public Uri? Uri { get; protected set; }
 
-        public virtual INavigationBuilder Animate(bool animate)
+        public virtual INavigationBuilder Animate(bool animate = true)
         {
             ShouldAnimate = animate;
             return this;
         }
 
-        public virtual INavigationBuilder AsModal()
+        public virtual INavigationBuilder AsModal(bool asModal = true)
         {
-            IsModal = true;
+            NavigateAsModal = asModal;
+            return this;
+        }
+
+        public virtual INavigationBuilder EnsureSuccess()
+        {
+            ShouldEnsureSuccess = true;
             return this;
         }
 
@@ -58,6 +68,7 @@
         
         public virtual async Task<INavigationResult> NavigateAsync()
         {
+            var stateService = NavigationService.WithState();
             INavigationResult result;
             if (Uri == null)
             {
@@ -73,16 +84,23 @@
                 }
 
                 var route = stringBuilder.ToString();
-                result = await NavigationService.State().NavigateAsync(route, NavigationParameters, IsModal, ShouldAnimate);
+                result = await stateService.NavigateAsync(route, NavigationParameters, NavigateAsModal, ShouldAnimate);
             }
             else
             {
-                result = await NavigationService.State().NavigateAsync(Uri, NavigationParameters, IsModal, ShouldAnimate);
+                result = await stateService.NavigateAsync(Uri, NavigationParameters, NavigateAsModal, ShouldAnimate);
             }
 
-            if (!result.Success)
+            if (result.Success)
             {
-                OnNavigationFailed(result);
+                return result;
+            }
+            
+            OnNavigationFailed(result);
+                
+            if (ShouldEnsureSuccess)
+            {
+                throw result.Exception;
             }
 
             return result;
@@ -104,26 +122,19 @@
 
         public virtual INavigationBuilder WithId<T>(T value)
         {
-            NavigationParameters.Add(ParamId, value);
-            return this;
+            return WithParam(ParamId, value);
         }
 
         public virtual INavigationBuilder WithParam<T>(string name, T value)
         {
+            NavigationParameters ??= new NavigationParameters();
             NavigationParameters.Add(name, value);
             return this;
         }
 
         protected virtual void OnNavigationFailed(INavigationResult result)
         {
-            NavigationExceptionHandler?.Invoke(result.Exception);
-        }
-
-        private static void HandleNavigationException(Exception exception)
-        {
-#if DEBUG
-            throw exception;
-#endif
+            NavigationFailedHandler?.Invoke(result);
         }
     }
 }

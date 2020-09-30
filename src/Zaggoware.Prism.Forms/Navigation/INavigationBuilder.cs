@@ -9,11 +9,11 @@
     
     public interface INavigationBuilder
     {
-        bool? IsModal { get; }
+        bool? NavigateAsModal { get; }
         
         bool NavigateFromRoot { get; }
         
-        NavigationParameters NavigationParameters { get; }
+        NavigationParameters? NavigationParameters { get; }
         
         INavigationService NavigationService { get; }
 
@@ -23,9 +23,11 @@
         
         Uri? Uri { get; }
         
-        INavigationBuilder Animate(bool animate);
+        INavigationBuilder Animate(bool animate = true);
 
-        INavigationBuilder AsModal();
+        INavigationBuilder AsModal(bool asModal = true);
+
+        INavigationBuilder EnsureSuccess();
         
         INavigationBuilder FromRoot();
 

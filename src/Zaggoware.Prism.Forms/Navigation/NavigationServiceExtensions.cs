@@ -17,7 +17,7 @@
             return new NavigationBuilder(navigationService).ToPage<TPage>();
         }
 
-        public static INavigationStateService State(this INavigationService navigationService)
+        public static INavigationStateService WithState(this INavigationService navigationService)
         {
             return NavigationStateService.Instance.WithNavigationService(navigationService);
         }
