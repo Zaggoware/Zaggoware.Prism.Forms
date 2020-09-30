@@ -12,7 +12,7 @@ Repository with some additional classes and extensions for the Prism Library for
 To make navigation easier and better structured instead of using hardcoded strings, a navigation builder has been added.
 Use the extension method `Builder()` or `Builder<TBuilder>()` in `Zaggoware.Prism.Forms.Navigation` on Prism's `NavigationService` to create a new builder:
 ```csharp
-INavigationBuilder builder = Navigationservice.Builder();
+INavigationBuilder builder = NavigationService.Builder();
 ```
 
 ### Basic usage:
