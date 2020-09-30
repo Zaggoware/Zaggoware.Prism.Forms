@@ -1,4 +1,4 @@
-﻿namespace Zaggoware.Prism.Forms.Navigation
+﻿﻿namespace Zaggoware.Prism.Forms.Navigation
 {
     using System.Collections.Generic;
     

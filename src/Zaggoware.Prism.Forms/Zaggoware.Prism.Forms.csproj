@@ -17,19 +17,4 @@
       <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     </ItemGroup>
 
-    <ItemGroup>
-      <EmbeddedResource Update="Exceptions.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Exceptions.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Exceptions.resx</DependentUpon>
-      </Compile>
-    </ItemGroup>
-
 </Project>

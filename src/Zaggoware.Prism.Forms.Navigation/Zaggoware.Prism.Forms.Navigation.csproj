@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Prism.Forms" Version="7.2.0.1422" />
+      <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Exceptions.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Exceptions.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Exceptions.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>
