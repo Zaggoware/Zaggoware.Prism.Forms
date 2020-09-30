@@ -1,24 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
+        <RootNamespace>Zaggoware.Prism.Forms.ViewModels</RootNamespace>
+        <AssemblyName>Zaggoware.Prism.Forms.ViewModels</AssemblyName>
         <Authors>Patrick van der Linden</Authors>
-        <Company>Zaggoware</Company>
-        <Description>Package with some useful additional classes and extensions for the Prism Library for Xamarin Forms to make things a bit easier and prettier.</Description>
+        <Description>Base page view models for adding better structure to your view models when dealing with API-calls and refreshable lists.</Description>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageProjectUrl>https://github.com/Zaggoware/Zaggoware.Prism.Forms</PackageProjectUrl>
-        <Version>1.1.0</Version>
         <RepositoryUrl>https://github.com/Zaggoware/Zaggoware.Prism.Forms</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="Prism.Forms" Version="7.2.0.1422" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Zaggoware.Prism.Forms.Navigation\Zaggoware.Prism.Forms.Navigation.csproj" />
-      <ProjectReference Include="..\Zaggoware.Prism.Forms.ViewModels\Zaggoware.Prism.Forms.ViewModels.csproj" />
+      <PackageReference Include="PropertyChanged.Fody" Version="3.2.9" />
+      <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+      <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />
     </ItemGroup>
   
     <ItemGroup>

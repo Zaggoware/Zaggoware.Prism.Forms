@@ -9,10 +9,10 @@
     
     using Xamarin.Forms;
 
-    public abstract class RefreshablePageViewModelBase<TData> : PageViewModelBase<TData>
+    public abstract class RefreshableApiPageViewModelBase<TData> : ApiPageViewModelBase<TData>
         where TData : class
     {
-        protected RefreshablePageViewModelBase(
+        protected RefreshableApiPageViewModelBase(
             INavigationService navigationService,
             IPageDialogService pageDialogService)
             : base(navigationService, pageDialogService)

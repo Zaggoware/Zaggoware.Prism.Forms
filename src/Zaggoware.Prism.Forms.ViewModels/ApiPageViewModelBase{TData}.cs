@@ -1,4 +1,6 @@
-﻿namespace Zaggoware.Prism.Forms.ViewModels
+﻿using PropertyChanged;
+
+namespace Zaggoware.Prism.Forms.ViewModels
 {
     using System.Threading.Tasks;
 
@@ -8,10 +10,10 @@
     using Xamarin.Essentials;
     using Xamarin.Forms;
     
-    public abstract class PageViewModelBase<TData> : PageViewModelBase
+    public abstract class ApiPageViewModelBase<TData> : PageViewModelBase
         where TData : class
     {
-        public PageViewModelBase(
+        public ApiPageViewModelBase(
             INavigationService navigationService,
             IPageDialogService pageDialogService) 
             : base(navigationService, pageDialogService)
@@ -54,6 +56,7 @@
             return data;
         }
 
+        [SuppressPropertyChangedWarnings]
         protected virtual async void OnConnectivityChanged(object sender, ConnectivityChangedEventArgs args)
         {
             if (args.NetworkAccess == NetworkAccess.Internet)

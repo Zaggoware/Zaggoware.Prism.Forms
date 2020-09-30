@@ -1,8 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
+        <Authors>Patrick van der Linden</Authors>
+        <Description>Extends Prism.Forms.Navigation with a NavigationBuilder for prettier navigation.</Description>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageProjectUrl>https://github.com/Zaggoware/Zaggoware.Prism.Forms</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Zaggoware/Zaggoware.Prism.Forms</RepositoryUrl>
+        <Version>1.1.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
@@ -25,4 +31,7 @@
       </Compile>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="LICENSE" Pack="true" PackagePath="" />
+    </ItemGroup>
 </Project>
