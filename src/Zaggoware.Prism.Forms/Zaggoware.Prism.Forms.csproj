@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
@@ -8,12 +8,12 @@
         <Description>Package with some useful additional classes and extensions for the Prism Library for Xamarin Forms to make things a bit easier and prettier.</Description>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageProjectUrl>https://github.com/Zaggoware/Zaggoware.Prism.Forms</PackageProjectUrl>
-        <Version>1.1.0</Version>
-        <RepositoryUrl>https://github.com/Zaggoware/Zaggoware.Prism.Forms</RepositoryUrl>
+		<RepositoryUrl>https://github.com/Zaggoware/Zaggoware.Prism.Forms</RepositoryUrl>
+		<Version>2.0.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Prism.Forms" Version="7.2.0.1422" />
+      <PackageReference Include="Prism.Forms" Version="8.1.97" />
     </ItemGroup>
 
     <ItemGroup>
